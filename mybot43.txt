@@ -142,34 +142,34 @@ def product(update, context):
     query = update.callback_query
     product = query.data
     price = None
-if product == 'iphone_13_pro_max_128gb':
-    price = 1099
-elif product == 'iphone_13_pro_max_256gb':
-    price = 1199
-elif product == 'iphone_13_pro_128gb':
-    price = 999
-elif product == 'iphone_13_pro_256gb':
-    price = 1099
-elif product == 'ipad_pro_12_9_128gb':
-    price = 1099
-elif product == 'ipad_pro_12_9_256gb':
-    price = 1199
-elif product == 'ipad_pro_11_128gb':
-    price = 799
-elif product == 'ipad_pro_11_256gb':
-    price = 899
-elif product == 'macbook_air_m1_256gb':
-    price = 999
-elif product == 'macbook_air_m1_512gb':
-    price = 1249
-elif product == 'macbook_pro_m1_256gb':
-    price = 1299
-elif product == 'macbook_pro_m1_512gb':
-    price = 1499
-elif product == 'airpods_2nd_gen':
-    price = 159
-elif product == 'airpods_pro':
-    price = 249
+    if product == 'iphone_13_pro_max_128gb':
+        price = 1099
+    elif product == 'iphone_13_pro_max_256gb':
+        price = 1199
+    elif product == 'iphone_13_pro_128gb':
+        price = 999
+    elif product == 'iphone_13_pro_256gb':
+        price = 1099
+    elif product == 'ipad_pro_12_9_128gb':
+        price = 1099
+    elif product == 'ipad_pro_12_9_256gb':
+        price = 1199
+    elif product == 'ipad_pro_11_128gb':
+        price = 799
+    elif product == 'ipad_pro_11_256gb':
+        price = 899
+    elif product == 'macbook_air_m1_256gb':
+        price = 999
+    elif product == 'macbook_air_m1_512gb':
+        price = 1249
+    elif product == 'macbook_pro_m1_256gb':
+        price = 1299
+    elif product == 'macbook_pro_m1_512gb':
+        price = 1499
+    elif product == 'airpods_2nd_gen':
+        price = 159
+    elif product == 'airpods_pro':
+        price = 249
 
 if price is None:
     query.edit_message_text('Произошла ошибка. Попробуйте еще раз.')
