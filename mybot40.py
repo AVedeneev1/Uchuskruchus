@@ -1,6 +1,15 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 
+import telebot
+from telebot import types
+
+# Здесь нужно вставить токен вашего бота
+TOKEN = 'your_bot_token_here'
+
+# Создание экземпляра бота
+bot = telebot.TeleBot(TOKEN)
+
 def start(update, context):
     keyboard = [[InlineKeyboardButton("iPhone", callback_data='iphone'),
                  InlineKeyboardButton("iPad", callback_data='ipad')],
