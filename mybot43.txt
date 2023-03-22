@@ -138,38 +138,38 @@ elif category == 'airpods':
 reply_markup = InlineKeyboardMarkup(keyboard)
 query.edit_message_text('Выберите товар:', reply_markup=reply_markup)
 
-    def product(update, context):
+def product(update, context):
     query = update.callback_query
     product = query.data
     price = None
 if product == 'iphone_13_pro_max_128gb':
-price = 1099
+    price = 1099
 elif product == 'iphone_13_pro_max_256gb':
-price = 1199
+    price = 1199
 elif product == 'iphone_13_pro_128gb':
-price = 999
+    price = 999
 elif product == 'iphone_13_pro_256gb':
-price = 1099
+    price = 1099
 elif product == 'ipad_pro_12_9_128gb':
-price = 1099
+    price = 1099
 elif product == 'ipad_pro_12_9_256gb':
-price = 1199
+    price = 1199
 elif product == 'ipad_pro_11_128gb':
-price = 799
+    price = 799
 elif product == 'ipad_pro_11_256gb':
-price = 899
+    price = 899
 elif product == 'macbook_air_m1_256gb':
-price = 999
+    price = 999
 elif product == 'macbook_air_m1_512gb':
-price = 1249
+    price = 1249
 elif product == 'macbook_pro_m1_256gb':
-price = 1299
+    price = 1299
 elif product == 'macbook_pro_m1_512gb':
-price = 1499
+    price = 1499
 elif product == 'airpods_2nd_gen':
-price = 159
+    price = 159
 elif product == 'airpods_pro':
-price = 249
+    price = 249
 
 if price is None:
     query.edit_message_text('Произошла ошибка. Попробуйте еще раз.')
@@ -184,8 +184,8 @@ reply_markup = InlineKeyboardMarkup(keyboard)
 query.edit_message_text('Выбран товар {} по цене ${}. Что дальше?'.format(product.replace('_', ' ').title(), price), reply_markup=reply_markup)
 
 def confirm_order(update, context):
-query = update.callback_query
-query.edit_message_text('Ваш заказ принят на обработку.')
+    query = update.callback_query
+    query.edit_message_text('Ваш заказ принят на обработку.')
 
 product = context.user_data.get('product')
 price = context.user_data.get('price')
@@ -198,29 +198,28 @@ message = 'Поступил новый заказ!\n\nТовар: {}\nЦена: 
 context.bot.send_message(chat_id=ADMIN_CHAT_ID, text=message)
 
 def back(update, context):
-query = update.callback_query
-query.edit_message_text('Выберите категорию:')
-start(update, context)
+    query = update.callback_query
+    query.edit_message_text('Выберите категорию:')
+    start(update, context)
 
 def main():
-updater = Updater(token=TOKEN, use_context=True)
-dp = updater.dispatcher
+    updater = Updater(token=TOKEN, use_context=True)
+    dp = updater.dispatcher
 
 dp.add_handler(CommandHandler('start', start))
 
-dp.add_handler(CallbackQueryHandler(category, def back(update, context):
+dp.add_handler(CallbackQueryHandler(category, lambda update, context: back(update, context)))
 query = update.callback_query
 query.edit_message_text('Выберите категорию:')
 start(update, context)
 
 def main():
-updater = Updater(token=TOKEN, use_context=True)
-dp = updater.dispatcher
+    updater = Updater(token=TOKEN, use_context=True)
+    dp = updater.dispatcher
 
 less
 Copy code
 dp.add_handler(CommandHandler('start', start))
-
 dp.add_handler(CallbackQueryHandler(category, context=context))
 dp.add_handler(CallbackQueryHandler(back, pattern='back', context=context))
 dp.add_handler(CallbackQueryHandler(add_to_cart, pattern=r'^add_to_cart_', context=context))
